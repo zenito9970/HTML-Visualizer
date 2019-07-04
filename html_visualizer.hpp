@@ -2,16 +2,14 @@
 #ifndef INCLUDE_HTML_VISUALIZER_HPP__
 #define INCLUDE_HTML_VISUALIZER_HPP__
 
+#include <string>
 #include <cstdio>
-#include <cstdlib>
 
 namespace HtmlVisualizer {
 
-using namespace std;
-
 namespace VisConstants {
 
-const char *html_head =
+const char *HTML_HEAD =
 "<html><head><script type=\"text/javascript\">"
 "var now_page = 0;"
 "function draw() {"
@@ -40,7 +38,7 @@ const char *html_head =
 
 "function page1(ctx) {";
 
-const char *html_tail =
+const char *HTML_TAIL =
 "</script></head><body>"
 "<input type=\"button\" value=\"prev\" onclick=\"prev_page();\"></input>"
 "<input type=\"button\" value=\"next\" onclick=\"next_page();\"></input>"
@@ -60,34 +58,34 @@ private:
     int page_count = 1;
 
     void set_color(Color c) {
-        fprintf(fp, "ctx.fillStyle=\"rgb(%d,%d,%d)\";", c.r, c.g, c.b);
-        fprintf(fp, "ctx.stokeStyle=\"rgb(%d,%d,%d)\";", c.r, c.g, c.b);
+        std::fprintf(fp, "ctx.fillStyle=\"rgb(%d,%d,%d)\";", c.r, c.g, c.b);
+        std::fprintf(fp, "ctx.stokeStyle=\"rgb(%d,%d,%d)\";", c.r, c.g, c.b);
     }
 
 public:
-    Vis(string filename = "result.html") {
-        fp = fopen(filename.c_str(), "w");
-        fprintf(fp, "%s", VisConstants::html_head);
+    Vis(std::string filename = "result.html") {
+        fp = std::fopen(filename.c_str(), "w");
+        std::fprintf(fp, "%s", VisConstants::HTML_HEAD);
     }
 
     ~Vis() {
-        fprintf(fp, "}\nconst page_func=[page1");
+        std::fprintf(fp, "}\nconst page_func=[page1");
         for(int i = 2; i <= page_count; ++i) {
-            fprintf(fp, ",page%d", i);
+            std::fprintf(fp, ",page%d", i);
         }
-        fprintf(fp, "];");
-        fprintf(fp, "%s\n", VisConstants::html_tail);
-        fclose(fp);
+        std::fprintf(fp, "];");
+        std::fprintf(fp, "%s\n", VisConstants::HTML_TAIL);
+        std::fclose(fp);
     }
 
     void new_page() {
         page_count++;
-        fprintf(fp, "}\nfunction page%d(ctx){", page_count);
+        std::fprintf(fp, "}\nfunction page%d(ctx){", page_count);
     }
 
     void circle(double x, double y, double radius, Color bg = {0, 0, 0}) {
         set_color(bg);
-        fprintf(fp,
+        std::fprintf(fp,
             "ctx.beginPath();"
             "ctx.arc(%.2lf,%.2lf,%.2lf,0,Math.PI*2,false);"
             "ctx.closePath();"
@@ -98,12 +96,12 @@ public:
 
     void rect(double x, double y, double w, double h, Color bg = {0, 0, 0}, bool border = false) {
         set_color(bg);
-        fprintf(fp,
+        std::fprintf(fp,
             "ctx.fillRect(%.2lf,%.2lf,%.2lf,%.2lf);",
             x, y, w, h
         );
         if(border) {
-            fprintf(fp,
+            std::fprintf(fp,
                 "ctx.stokeStyle=\"rgb(0,0,0)\";"
                 "ctx.rect(%.2lf,%.2lf,%.2lf,%.2lf);"
                 "ctx.stroke();",
