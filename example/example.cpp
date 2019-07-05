@@ -36,7 +36,7 @@ void draw_visit(Vis &vis, const vector<vector<int>> &dist) {
     for(int y = 0; y < dist.size(); ++y) {
         for(int x = 0; x < dist[y].size(); ++x) {
             if(dist[y][x] < (1<<29)) {
-                vis.rect(S * x, S * y, S, S, Color {100, 100, 100});
+                vis.rect(S * x, S * y, S, S, Palette::Gray);
             }
         }
     }
@@ -44,7 +44,7 @@ void draw_visit(Vis &vis, const vector<vector<int>> &dist) {
 
 void draw_route(Vis &vis, const vector<P> &route) {
     for(P p: route) {
-        vis.circle(S * (p.first + 0.5), S * (p.second + 0.5), S / 2, Color {255, 0, 0});
+        vis.circle(S * (p.first + 0.5), S * (p.second + 0.5), S / 2, Palette::Red);
     }
 }
 

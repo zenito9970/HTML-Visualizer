@@ -52,6 +52,18 @@ struct Color {
     int r, g, b;
 };
 
+namespace Palette {
+    constexpr Color Black = {0, 0, 0};
+    constexpr Color White = {255, 255, 255};
+    constexpr Color Gray = {150, 150, 150};
+    constexpr Color Purple = {97, 68, 208};
+    constexpr Color Blue = {83, 146, 210};
+    constexpr Color Green = {100, 216, 127};
+    constexpr Color Yellow = {248, 232, 70};
+    constexpr Color Orange = {232, 140, 84};
+    constexpr Color Red = {223, 71, 87};
+} // namespace: Palette
+
 class Vis {
 private:
     FILE *fp;

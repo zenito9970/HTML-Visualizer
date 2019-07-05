@@ -37,6 +37,20 @@ C++でアルゴリズム等の実装を可視化するためのライブラリ�
 `int r` ， `int g` ， `int b` の3つのフィールドを持ちます．  
 各フィールドは0から255までの値で表されます．
 
+#### `namespace Palette`
+
+`Color` 構造体のプリセットが用意されています．以下の9色です．
+
+1. `Palette::Black`
+1. `Palette::White`
+1. `Palette::Gray`
+1. `Palette::Purple`
+1. `Palette::Blue`
+1. `Palette::Green`
+1. `Palette::Yellow`
+1. `Palette::Orange`
+1. `Palette::Red`
+
 
 ## HTMLファイルの使い方
 
