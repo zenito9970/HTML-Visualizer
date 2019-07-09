@@ -97,7 +97,7 @@ vector<P> bfs(Vis &vis, P start, P goal) {
 }
 
 int main() {
-    auto vis = Vis("example.html");
+    auto vis = Vis("example-bfs.html");
     draw_grid(vis);
     auto route = bfs(vis, make_pair(1, 1), make_pair(8, 5));
     for(P p: route) {
