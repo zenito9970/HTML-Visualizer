@@ -121,6 +121,19 @@ public:
             );
         }
     }
+
+    void line(double x1, double y1, double x2, double y2, double width = 1, Color color = {0, 0, 0}) {
+        set_color(color);
+        std::fprintf(fp,
+            "ctx.beginPath();"
+            "ctx.lineWidth=%.2lf;"
+            "ctx.moveTo(%.2lf,%.2lf);"
+            "ctx.lineTo(%.2lf,%.2lf);"
+            "ctx.closePath();"
+            "ctx.stroke();",
+            width, x1, y1, x2, y2
+        );
+    }
 };
 
 } // namespace: HtmlVisualizer
