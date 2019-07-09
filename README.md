@@ -26,7 +26,7 @@ C++でアルゴリズム等の実装を可視化するためのライブラリ�
 デフォルトでは背景色を黒，枠線なしで描きます．  
 引数: `bg` で背景色を指定できます．
 
-### `void line(double x1, double y1, double x2, double y2, double width = 1 , Color color = {0, 0, 0})`
+#### `void line(double x1, double y1, double x2, double y2, double width = 1 , Color color = {0, 0, 0})`
 
 座標 ( `x1`, `y1` ) と座標 ( `x2`, `y2` ) を結ぶ直線を描きます．  
 デフォルトでは黒い線を太さ1pxで描きます．
